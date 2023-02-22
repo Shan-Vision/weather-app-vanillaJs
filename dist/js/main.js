@@ -1,0 +1,6 @@
+const initApp = () => {
+	// add listiners
+
+	
+};
+
