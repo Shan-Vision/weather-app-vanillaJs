@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Shan-Vision/weather-app-vanillaJs#readme",
   "dependencies": {
     "node-fetch": "^3.3.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^13.0.0"
   }
 }
