@@ -24,7 +24,6 @@ export const getWeatherFromCoords = async (locationObj) => {
 	// } catch (error) {
 	// 	console.error(error);
 	// }
-
 	const urlDataObj = {
 		lat: locationObj.getLat(),
 		lon: locationObj.getLon(),
@@ -35,10 +34,10 @@ export const getWeatherFromCoords = async (locationObj) => {
 			method: "POST",
 			body: JSON.stringify(urlDataObj),
 		});
-		const weatherJson = weatherStream.json();
+		const weatherJson = await weatherStream.json();
 		return weatherJson;
-	} catch (error) {
-		console.error(error);
+	} catch (err) {
+		console.error(err);
 	}
 };
 
@@ -66,8 +65,8 @@ export const getCoordsFromApi = async (entryText, units) => {
 		});
 		const jsonData = await dataStream.json();
 		return jsonData;
-	} catch (error) {
-		console.error(error);
+	} catch (err) {
+		console.error(err);
 	}
 };
 
