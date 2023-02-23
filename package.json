@@ -1,0 +1,23 @@
+{
+  "name": "weather-app-vanillajs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shan-Vision/weather-app-vanillaJs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shan-Vision/weather-app-vanillaJs/issues"
+  },
+  "homepage": "https://github.com/Shan-Vision/weather-app-vanillaJs#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}
