@@ -73,7 +73,6 @@ export const updateDisplay = (weatherJson, locationObj) => {
 	fadeDisplay();
 	clearDisplay();
 	const weatherClass = getWeatherClass(weatherJson.current.weather[0].icon);
-	console.log('weatherClass', weatherClass)
 	setBGImage(weatherClass);
 	const screenReaderWeather = buildScreenReaderWeather(weatherJson, locationObj);
 	updateScreenReaderConfirmation(screenReaderWeather);
@@ -342,4 +341,16 @@ const createDailyForecastIcon = (icon, altText) => {
 	}
 	img.alt = altText;
 	return img;
+};
+
+
+const displayDailyForecast = (dfArray) => {
+	const dayDiv = createElem("div", "forecastDay");
+	dfArray.forEach((el) => {
+		dayDiv.appendChild(el);
+	});
+	const dailyForecastContainer = document.getElementById(
+		"dailyForecast__contents"
+	);
+	dailyForecastContainer.appendChild(dayDiv);
 };

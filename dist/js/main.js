@@ -1,7 +1,20 @@
 import CurrentLocation from "./CurrentLocation.js";
-import { addSpinner, displayApiError, displayError, setPlaceholderText, updateDisplay, updateScreenReaderConfirmation } from "./domFunctions.js";
+import {
+	addSpinner,
+	displayApiError,
+	displayError,
+	setPlaceholderText,
+	updateDisplay,
+	updateScreenReaderConfirmation,
+} from "./domFunctions.js";
 
-import { cleanText, getCoordsFromApi, getHomeLocation, getWeatherFromCoords, setLocationObject } from "./dataFunctions.js";
+import {
+	cleanText,
+	getCoordsFromApi,
+	getHomeLocation,
+	getWeatherFromCoords,
+	setLocationObject,
+} from "./dataFunctions.js";
 const currentLoc = new CurrentLocation();
 
 const initApp = () => {
@@ -22,6 +35,7 @@ const initApp = () => {
 	setPlaceholderText();
 
 	// load weather
+	loadWeather();
 };
 
 document.addEventListener("DOMContentLoaded", initApp);
@@ -35,7 +49,6 @@ const getGeoWeather = (event) => {
 		}
 	}
 	if (!navigator.geolocation) return geoError();
-	console.log("navigator", navigator);
 	navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
 };
 
@@ -125,7 +138,7 @@ const submitNewLocation = async (event) => {
 	const locationIcon = document.querySelector(".fa-solid");
 	addSpinner(locationIcon);
 	const coordsData = await getCoordsFromApi(entryText, currentLoc.getUnit());
-	
+
 	if (coordsData) {
 		if (coordsData.cod === 200) {
 			// work with api data
@@ -138,7 +151,7 @@ const submitNewLocation = async (event) => {
 			setLocationObject(currentLoc, myCoordsObj);
 			updateDataAndDisplay(currentLoc);
 		} else {
-			displayApiError (coordsData);
+			displayApiError(coordsData);
 		}
 	} else {
 		displayError("Connection error", "Connection error");
