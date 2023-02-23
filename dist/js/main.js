@@ -1,7 +1,7 @@
 import CurrentLocation from "./CurrentLocation.js";
-import { addSpinner, displayApiError, displayError, setPlaceholderText, updateScreenReaderConfirmation } from "./domFunctions.js";
+import { addSpinner, displayApiError, displayError, setPlaceholderText, updateDisplay, updateScreenReaderConfirmation } from "./domFunctions.js";
 
-import { cleanText, getCoordsFromApi, getHomeLocation, setLocationObject } from "./dataFunctions.js";
+import { cleanText, getCoordsFromApi, getHomeLocation, getWeatherFromCoords, setLocationObject } from "./dataFunctions.js";
 const currentLoc = new CurrentLocation();
 
 const initApp = () => {
@@ -107,7 +107,7 @@ const saveLocation = () => {
 const setUnitPref = () => {
 	const unitIcon = document.querySelector(".fa-chart-bar");
 	addSpinner(unitIcon);
-	currentLoc.toogleUnit();
+	currentLoc.toggleUnit();
 	updateDataAndDisplay(currentLoc);
 };
 
@@ -146,6 +146,6 @@ const submitNewLocation = async (event) => {
 };
 
 const updateDataAndDisplay = async (locationObj) => {
-	// const weatherJson = await getWeatherFromCoords(locationObj);
-	// if (weatherJson) updateDisplay(weatherJson, locationObj);
+	const weatherJson = await getWeatherFromCoords(locationObj);
+	if (weatherJson) updateDisplay(weatherJson, locationObj);
 };
