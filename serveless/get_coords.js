@@ -3,6 +3,7 @@ const { WEATHER_API_KEY } = process.env;
 
 exports.handler = async (event, context) => {
 	const params = JSON.parse(event.body);
+	console.log("paramsCoords", params);
 	const { text, units } = params;
 	const regex = /^d+$/g;
 	const flag = regex.test(text) ? "zip" : "q";
