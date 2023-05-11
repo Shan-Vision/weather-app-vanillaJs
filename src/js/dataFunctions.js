@@ -1,3 +1,5 @@
+import config from "@babel/core/lib/config";
+
 export const setLocationObject = (locationObj, coordsObj) => {
 	const { lat, lon, name, unit } = coordsObj;
 	locationObj.setLat(lat);
@@ -32,6 +34,7 @@ export const getCoordsFromApi = async (entryText, units) => {
 	const flag = regex.test(entryText) ? "zip" : "q";
 	const url = `https://api.openweathermap.org/data/2.5/weather?${flag}=${entryText}&units=${units}&appid=${process.env.WEATHER_API_KEY}`;
 	const encodedUrl = encodeURI(url);
+	console.log("encodedUrl", encodedUrl);
 	try {
 		const { data } = await axios.get(encodedUrl);
 		return data;
