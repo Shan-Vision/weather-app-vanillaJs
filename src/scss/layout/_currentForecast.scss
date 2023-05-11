@@ -1,9 +1,9 @@
 .currentForecast {
 	&__location {
+		margin-bottom: 16px;
 		font-size: 16px;
 		font-weight: normal;
 		text-align: center;
-		margin-bottom: 16px;
 		@include mq(768px) {
 			font-size: 22px;
 		}
