@@ -33,7 +33,7 @@ export const getCoordsFromApi = async (entryText, units) => {
 	const url = `https://api.openweathermap.org/data/2.5/weather?${flag}=${entryText}&units=${units}&appid=${process.env.WEATHER_API_KEY}`;
 	const encodedUrl = encodeURI(url);
 	try {
-		const { data } = await axios.get(url);
+		const { data } = await axios.get(encodedUrl);
 		return data;
 	} catch (err) {
 		console.error(err.stack);
